@@ -41,6 +41,9 @@
     <property name="text">
      <string/>
     </property>
+    <property name="pixmap">
+     <pixmap>gorislav.png</pixmap>
+    </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
