@@ -8,11 +8,14 @@
 #include "phonon4qt5/phonon/AudioOutput"
 #include "phonon4qt5/phonon/MediaSource"
 #include "QPixmap"
+#include "QMovie"
 
-int clicks = 0;
+const QString image = "/home/pav311/projects/vzlomCASINO/media/gorislav.png"; // вот тут надо заменить путь на свой
+const QString gif = "/home/pav311/projects/vzlomCASINO/media/donate.gif"; // и тут
+const QString audio = "/home/pav311/projects/vzlomCASINO/media/sound1.wav"; // и еще тут
 const int tRubles = rand()%99999999+10000000;
+int clicks = 0;
 bool soundOn = false;
-//const int tRubles = 7;
 
 
 
@@ -52,30 +55,33 @@ void MainWindow::on_Yes_clicked()
         QString cRubles = QString::number(tRubles);
         QString inf = "КАЗИНО взломано. Деньги пошли\n на оплату fisting.";
         ui->label->setText(inf);
+        QMovie *movie = new QMovie(gif);
+        QLabel *processLabel = new QLabel(this);
+        ui->labelImage->setMovie(movie);
+        movie->start();
         QMessageBox::information(0,"","Казино взломано!");
         exit(0);
     }
 
-    if (clicks > 75) {
+    if (clicks > 5) {
         QString inf = "Bondage gay website взломано на " + percents + "% \n Выкачено "
             + cRubles + " bucks из " + Rubles + "\n bucks \n Продолжить fisting ass?";
 
 
         if (!soundOn) {
 
-            Phonon::MediaObject *player = Phonon::createPlayer(
-                        Phonon::MusicCategory,
-                        Phonon::MediaSource(":/audio/sound.wav")
-            );
+            Phonon::MediaObject *player = Phonon::createPlayer(Phonon::MusicCategory, Phonon::MediaSource(audio));
             player->play();
 
-            QPixmap pix(":/images/gorislav.png");
+            QPixmap pix(image);
 
             ui->labelImage->setPixmap(pix);
+
             ui->label->setStyleSheet("color: rgb(255, 255, 255); font-size: 1; font: bold");
             //ui->label->setStyleSheet("font: bold");
             soundOn = true;
         }
+
         ui->label->setAlignment(Qt::AlignCenter);
         ui->label->setText(inf);
     }

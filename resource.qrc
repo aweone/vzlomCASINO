@@ -1,8 +1,0 @@
-<RCC>
-    <qresource prefix="/audio">
-        <file>sound.wav</file>
-    </qresource>
-    <qresource prefix="/images">
-        <file>gorislav.png</file>
-    </qresource>
-</RCC>
